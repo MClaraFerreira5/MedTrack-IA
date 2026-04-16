@@ -1,1 +1,5 @@
 data/
+# Ignorar todas as imagens JPG e JPEG
+*.jpg
+*.jpeg
+*.png
