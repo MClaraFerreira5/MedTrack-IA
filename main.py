@@ -1,56 +1,29 @@
-import torch
-import cv2
 from ultralytics import YOLO
-import os
+import cv2
 
-
+# Carrega o modelo base
 model = YOLO('yolov8n.pt')
-def detect_crop(img_path):
-    img = cv2.imread(img_path)
 
-    if img is None:
-        print("Erro: Imagem nao encontrada")
-        return None
+# 1. Carrega o SEU modelo treinado (ajuste o caminho se necessário)
+model = YOLO(r'C:\Users\clara\Documents\GitHub\MedTrack-IA\runs\detect\train5\weights\best.pt')
 
-    h_orig, w_orig, _ = img.shape
-    results = model.predict(img, conf=0.2)
-    biggest = 0
-    better_box = None
+# 2. Escolha uma imagem de teste (uma que o modelo nunca viu)
+img_path = '20260330_115955.jpg'
 
-    for result in results:
-        boxes = result.boxes
-        for box in boxes:
-            x1, y1, x2, y2 = map(int, box.xyxy[0])
-            area = (y2 - y1) * (x2 - x1)
-            if area > biggest:
-                biggest = area
-                better_box = (x1, y1, x2, y2)
+# 3. Faz a detecção
+results = model.predict(source=img_path, conf=0.5, save=True)
 
-    if better_box:
-        x1, y1, x2, y2 = better_box
+# ... (após o processamento do modelo)
+for r in results:
+    im_array = r.plot()
 
-        largura_box = x2 - x1
-        altura_box = y2 - y1
+    # 1. Cria a janela como redimensionável
+    cv2.namedWindow("Resultado", cv2.WINDOW_NORMAL)
 
-        padding_w = int(largura_box)
-        padding_h = int(altura_box * 0.2)
+    # 2. Define um tamanho fixo (ex: 800x600) para ela não ocupar a tela toda
+    cv2.resizeWindow("Resultado", 800, 600)
 
-        nx1 = max(0, x1 - padding_w)
-        ny1 = max(0, y1 - padding_h)
-        nx2 = min(w_orig, x2 + padding_w)
-        ny2 = min(h_orig, y2 + padding_h)
-
-        crop_img = img[ny1:ny2, nx1:nx2]
-        cv2.imwrite('croped_medicine.jpg', crop_img)
-        print("Sucesso! Recorte salvo como 'croped_medicine.jpg'")
-        # Desenha o que o YOLO achou (Vermelho)
-        cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 3)
-        # Desenha o novo corte com margem (Verde)
-        cv2.rectangle(img, (nx1, ny1), (nx2, ny2), (0, 255, 0), 3)
-        cv2.imwrite('debug_deteccao.jpg', img)
-        return crop_img
-
-    print("Erro: Nenhum Objeto detectado pelo YOLO")
-    return None
-
-detect_crop('data/Puran T4 - 50mcg/20260329_110141.jpg')
+    # 3. Mostra a imagem dentro dessa janela controlada
+    cv2.imshow("Resultado", im_array)
+    cv2.waitKey(0)
+cv2.destroyAllWindows()
