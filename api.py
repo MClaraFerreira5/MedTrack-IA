@@ -1,3 +1,4 @@
+
 import cv2
 import easyocr
 import uvicorn
@@ -38,7 +39,6 @@ async def extract_medicine_info(file: UploadFile = File(...)):
                 data_extracted["count"] += 1
 
     return data_extracted
-
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)

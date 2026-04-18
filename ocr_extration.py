@@ -10,8 +10,6 @@ def process_crops_with_ocr(img, results, reader, model_names):
             # Coordenadas e Classe
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             label_name = model_names[int(box.cls[0])]
-
-            # 1. Isola a Região de Interesse (ROI)
             roi = img[y1:y2, x1:x2]
 
             if roi.size > 0:
