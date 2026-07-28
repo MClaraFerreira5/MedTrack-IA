@@ -49,4 +49,5 @@ use `$PWD.Path` para fornecer o caminho absoluto.
 - O Compose é CPU. Uma variante GPU só será criada após a escolha da plataforma
   de deploy e do runtime NVIDIA.
 
-Para deploy de staging na Railway, consulte [RAILWAY.md](RAILWAY.md).
+Para deploy em um provedor de nuvem, consulte
+[CLOUD_DEPLOYMENT.md](CLOUD_DEPLOYMENT.md).

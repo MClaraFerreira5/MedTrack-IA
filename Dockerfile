@@ -19,14 +19,16 @@ RUN apt-get update \
         libgomp1 \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd --system app \
-    && useradd --system --gid app --home-dir /home/app --create-home app
+    && useradd --system --gid app --home-dir /home/app --create-home app \
+    && mkdir -p /app \
+    && chown app:app /app
 
 WORKDIR /app
 
-COPY --from=uv /uv /uvx /bin/
+COPY --from=uv --chown=app:app /uv /uvx /bin/
 
 # Resolve dependências antes do código para aproveitar o cache de camadas.
-COPY pyproject.toml uv.lock README.md ./
+COPY --chown=app:app pyproject.toml uv.lock README.md ./
 RUN uv sync --frozen --no-dev --group inference --no-install-project
 
 COPY --chown=app:app src ./src
@@ -34,7 +36,7 @@ COPY --chown=app:app config ./config
 COPY --chown=app:app scripts ./scripts
 RUN uv sync --frozen --no-dev --group inference
 
-COPY docker/entrypoint.sh /usr/local/bin/medtrack-entrypoint
+COPY --chown=app:app docker/entrypoint.sh /usr/local/bin/medtrack-entrypoint
 RUN chmod 755 /usr/local/bin/medtrack-entrypoint
 
 ENV MEDTRACK_FETCH_MODEL_ON_START=false \
@@ -44,7 +46,7 @@ ENV MEDTRACK_FETCH_MODEL_ON_START=false \
 EXPOSE 8000
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=45s --retries=3 \
-    CMD python -c "from urllib.request import urlopen; urlopen('http://127.0.0.1:8000/healthz', timeout=3)"
+    CMD python -c "import os; from urllib.request import urlopen; urlopen(f\"http://127.0.0.1:{os.environ.get('PORT', '8000')}/healthz\", timeout=3)"
 
 ENTRYPOINT ["/usr/local/bin/medtrack-entrypoint"]
 CMD ["sh", "-c", "uvicorn medtrack_ai.api.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

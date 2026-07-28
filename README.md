@@ -69,7 +69,7 @@ descritos em [docs/CI_CD.md](docs/CI_CD.md).
 | Artefato e versão do modelo | [docs/models/README.md](docs/models/README.md) |
 | Contêiner local | [docs/CONTAINER.md](docs/CONTAINER.md) |
 | CI/CD e versionamento | [docs/CI_CD.md](docs/CI_CD.md) |
-| Deploy de staging | [docs/RAILWAY.md](docs/RAILWAY.md) |
+| Deploy em nuvem | [docs/CLOUD_DEPLOYMENT.md](docs/CLOUD_DEPLOYMENT.md) |
 | Decisões arquiteturais | [docs/adr/README.md](docs/adr/README.md) |
 | Governança | [docs/GOVERNANCE.md](docs/GOVERNANCE.md) |
 

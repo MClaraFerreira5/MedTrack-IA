@@ -6,8 +6,8 @@ somente os níveis rápidos; testes que requerem artefato real são opt-in.
 | Nível | Localização | Dependências | Quando executar |
 | --- | --- | --- | --- |
 | Unitário | `tests/unit/` | Nenhuma rede, peso ou GPU | Todo commit e pull request |
-| Integração | `tests/test_api.py` | FastAPI e adaptador falso | Todo commit e pull request |
-| Manifesto | `tests/test_model_manifest.py` | Arquivos pequenos | Todo commit e pull request |
+| Integração | `../tests/integration/test_api.py` | FastAPI e adaptador falso | Todo commit e pull request |
+| Manifesto | `../tests/unit/test_model_manifest.py` | Arquivos pequenos | Todo commit e pull request |
 | Smoke de artefato | `tests/model/` | Peso local já verificado | Antes de deploy ou promoção |
 | Inferência real | futuro fixture de imagens aprovada | Peso + grupo `inference` | Pipeline manual dedicado |
 
