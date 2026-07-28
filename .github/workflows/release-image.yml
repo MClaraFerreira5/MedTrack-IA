@@ -12,7 +12,7 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: medtrack-project/medtrack-ai
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   verify:
