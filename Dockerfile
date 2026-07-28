@@ -48,5 +48,7 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=45s --retries=3 \
     CMD python -c "import os; from urllib.request import urlopen; urlopen(f\"http://127.0.0.1:{os.environ.get('PORT', '8000')}/healthz\", timeout=3)"
 
-ENTRYPOINT ["/usr/local/bin/medtrack-entrypoint"]
-CMD ["sh", "-c", "uvicorn medtrack_ai.api.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+# Temporary Railway diagnostic: bypass the entrypoint to isolate container
+# startup from entrypoint execution.
+# ENTRYPOINT ["/usr/local/bin/medtrack-entrypoint"]
+CMD ["sh", "-c", "echo 'CONTAINER IS ALIVE' && uvicorn medtrack_ai.api.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
