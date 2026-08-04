@@ -1,0 +1,67 @@
+name: Relatar problema
+description: Registre um comportamento incorreto sem incluir dados pessoais ou credenciais.
+title: "fix: "
+labels: [bug, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Não inclua tokens, endpoints privados, imagens de medicamentos ou dados reais de pacientes.
+        Vulnerabilidades devem ser reportadas pelo canal privado exibido no seletor de issues.
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição
+      description: O que ocorreu e qual era o comportamento esperado?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reprodução
+      description: Use dados sintéticos e informe requisição, configuração e passos mínimos.
+      placeholder: |
+        1. Inicie a API com...
+        2. Envie uma requisição para...
+        3. Observe...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Versão da API ou commit
+      placeholder: api-v1.2.3 ou SHA
+    validations:
+      required: true
+  - type: input
+    id: model_version
+    attributes:
+      label: Versão do modelo
+      description: Informe o valor de MEDTRACK_MODEL_VERSION, quando o problema envolver inferência.
+      placeholder: v1.0.0 ou Não se aplica
+    validations:
+      required: true
+  - type: dropdown
+    id: execution_environment
+    attributes:
+      label: Ambiente de execução
+      options:
+        - Docker Compose
+        - Contêiner sem Compose
+        - Python local
+        - CI/CD
+        - Outro
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidências sanitizadas
+      description: Inclua logs mínimos, resposta HTTP e traceback sem dados sensíveis.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Privacidade
+      options:
+        - label: Removi credenciais, tokens, imagens e dados pessoais ou de saúde das evidências.
+          required: true

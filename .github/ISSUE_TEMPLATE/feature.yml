@@ -1,0 +1,44 @@
+name: Propor melhoria
+description: Descreva uma necessidade de produto ou melhoria técnica.
+title: "feat: "
+labels: [enhancement, triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema
+      description: Qual necessidade deve ser atendida? Não inclua dados reais de pacientes.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Resultado esperado
+      description: Descreva o comportamento observável e critérios de sucesso.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área principal
+      options:
+        - API e contrato HTTP
+        - Inferência e OCR
+        - Treinamento e modelo
+        - Contêiner e deploy
+        - Observabilidade
+        - Documentação e qualidade
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas e impactos
+      description: Considere compatibilidade da API, privacidade, desempenho, modelo e operação.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Escopo
+      options:
+        - label: A proposta não contém credenciais, endpoints privados ou dados pessoais ou de saúde.
+          required: true
