@@ -77,8 +77,8 @@ descritos em [docs/CI_CD.md](docs/CI_CD.md).
 
 O repositório é restrito aos integrantes do projeto MedTrack. As regras de
 contribuição, revisão e responsáveis estão em [CONTRIBUTING.md](CONTRIBUTING.md).
-Relatos de vulnerabilidade devem seguir [SECURITY.md](SECURITY.md), e não ser
-publicados em issues.
+Espera-se que toda participação siga o [Código de Conduta](CODE_OF_CONDUCT.md).
+Relatos de vulnerabilidade devem seguir [SECURITY.md](SECURITY.md), e não ser publicados em issues.
 
 ## Licença
 
