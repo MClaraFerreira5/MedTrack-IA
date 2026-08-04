@@ -30,7 +30,7 @@ jobs:
           enable-cache: true
 
       - name: Install test environment
-        run: uv sync --frozen --group dev
+        run: uv sync --locked --group dev
 
       - name: Download model from immutable release
         run: uv run --no-sync python scripts/fetch_model.py --manifest "${{ inputs.manifest }}"
