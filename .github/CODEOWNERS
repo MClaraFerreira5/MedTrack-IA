@@ -1,1 +1,12 @@
-* @YannLeao @MClaraFerreira5 @EllenRocha1
+# Revisão compartilhada do projeto.
+* @YannLeao @EllenRocha1 @MClaraFerreira5
+
+# Mudanças de supply chain, release e segurança exigem revisão explícita dos owners.
+/.github/ @YannLeao @EllenRocha1 @MClaraFerreira5
+/Dockerfile @YannLeao @EllenRocha1 @MClaraFerreira5
+/compose.yaml @YannLeao @EllenRocha1 @MClaraFerreira5
+/pyproject.toml @YannLeao @EllenRocha1 @MClaraFerreira5
+/uv.lock @YannLeao @EllenRocha1 @MClaraFerreira5
+/SECURITY.md @YannLeao @EllenRocha1 @MClaraFerreira5
+/config/models/ @YannLeao @EllenRocha1 @MClaraFerreira5
+/scripts/fetch_model.py @YannLeao @EllenRocha1 @MClaraFerreira5

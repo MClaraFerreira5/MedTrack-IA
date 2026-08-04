@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Reportar vulnerabilidade em privado
+    url: https://github.com/MedTrack-Project/MedTrack-IA/security/advisories/new
+    about: Não abra vulnerabilidades, credenciais ou dados sensíveis em uma issue pública.

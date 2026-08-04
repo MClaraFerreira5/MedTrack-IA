@@ -1,0 +1,23 @@
+* text=auto
+
+# Texto versionado usa LF para produzir diffs e artefatos consistentes entre plataformas.
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.json text eol=lf
+*.sh text eol=lf
+*.lock text eol=lf
+Dockerfile text eol=lf
+
+# Artefatos binários não devem receber normalização de conteúdo.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
+*.pt binary
+*.onnx binary
+*.engine binary

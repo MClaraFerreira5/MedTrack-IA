@@ -7,9 +7,8 @@ training/datasets/
 training/runs/
 tests/test_artifacts/
 *.pdf
-tests/test_artifacts
 
-# --- Pyt_artihon ---
+# --- Python ---
 __pycache__/
 *.py[cod]
 *$py.class
@@ -18,6 +17,14 @@ venv/
 .uv-check/
 .env
 .coverage
+.coverage.*
+.pytest_cache/
+.ruff_cache/
+.pyright/
+htmlcov/
+dist/
+build/
+*.egg-info/
 
 # --- Modelos e Pesos (Arquivos Pesados) ---
 *.pt

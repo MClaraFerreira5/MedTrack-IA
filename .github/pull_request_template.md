@@ -1,22 +1,46 @@
-## Contexto
+## Objetivo
 
-<!-- Qual problema esta mudança resolve? Inclua a issue ou o card relacionado. -->
+<!-- Explique o problema e o resultado deste PR. -->
 
 Closes #
 
-## Alterações
+## Escopo
 
--
+<!-- Liste as mudanças incluídas e o que ficou explicitamente fora. -->
 
-## Validação
+## Evidências
 
-- [ ] Testes relevantes executados localmente.
-- [ ] Lint e checagem de tipos executados, quando aplicável.
-- [ ] Documentação, configuração e variáveis de ambiente atualizadas, quando aplicável.
-- [ ] Não foram incluídos segredos, dados de treinamento ou artefatos de modelo.
+<!-- Inclua comandos, resultados, screenshots ou vídeos relevantes. Não inclua dados sensíveis. -->
 
-## Impacto operacional
+## Riscos e rollback
 
-<!-- Compatibilidade de API, dados, modelo, CI/CD, Docker ou deploy. Use “Nenhum” se não houver. -->
+<!-- Descreva impacto na API, modelo, dados, contêiner ou deploy e como reverter. -->
 
-Nenhum.
+## Checklist
+
+- [ ] O PR tem escopo único e a branch está atualizada com a `main`.
+- [ ] Os commits seguem Conventional Commits.
+- [ ] Executei lint, checagem de tipos e testes automatizados.
+- [ ] Verifiquei o lockfile com `uv lock --check`.
+- [ ] Executei `git diff --check`.
+- [ ] Adicionei ou atualizei testes para o comportamento alterado.
+- [ ] A cobertura dos pacotes tocados não foi reduzida sem justificativa.
+- [ ] Validei o build do contêiner, quando a mudança o afeta.
+- [ ] Não incluí segredos, pesos, datasets, credenciais ou dados reais de pacientes.
+- [ ] Revisei logs, artefatos, imagens e payloads quanto a dados pessoais ou de saúde.
+- [ ] Mudanças no modelo preservam manifesto, versionamento, checksum e rollback.
+- [ ] Mudanças no contrato HTTP atualizaram `docs/contracts/api-v1.md` e seus consumidores.
+- [ ] Atualizei documentação/ADR quando alterei uma decisão técnica.
+- [ ] Documentei rollback para mudanças incompatíveis, de configuração ou release.
+- [ ] Não misturei upgrade amplo de dependências com refatoração funcional.
+
+## Testes executados
+
+```text
+uv lock --check
+uv run --group dev ruff check src tests scripts
+uv run --group dev pyright src/medtrack_ai tests scripts
+uv run --group dev pytest
+docker compose build
+git diff --check
+```
