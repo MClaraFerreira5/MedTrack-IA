@@ -17,5 +17,5 @@ services:
       MEDTRACK_YOLO_CONFIDENCE: ${MEDTRACK_YOLO_CONFIDENCE:-0.5}
       EASYOCR_MODULE_PATH: /home/app/.EasyOCR
     volumes:
-      - ./models:/app/models:ro
+      - ./models:/app/models:rw,z
     init: true
