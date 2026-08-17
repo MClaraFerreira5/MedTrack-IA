@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling>=1.31.0"]
+requires = ["hatchling>=1.32.0"]
 build-backend = "hatchling.build"
 
 [project]
@@ -16,24 +16,24 @@ dependencies = [
   "opencv-python-headless>=5.0.0.93,<6",
   "pydantic-settings>=2.15.0,<3",
   "python-multipart==0.0.32",
-  "uvicorn==0.52.1",
+  "uvicorn==0.52.3",
 ]
 
 [dependency-groups]
 inference = [
   "easyocr==1.7.2",
-  "ultralytics==8.4.115",
+  "ultralytics==8.4.120",
 ]
 training = [
-  "ultralytics==8.4.115",
+  "ultralytics==8.4.120",
 ]
 dev = [
   "httpx>=0.28.1,<0.29",
-  "pre-commit>=3.7,<5",
+  "pre-commit>=4.6.2,<5",
   "pytest>=9.1.1,<10",
   "pytest-cov>=7.1.0,<8",
   "pyright>=1.1.360,<2",
-  "ruff>=0.16.1,<1",
+  "ruff>=0.16.3,<1",
 ]
 
 [tool.hatch.build.targets.wheel]
